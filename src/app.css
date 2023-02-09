@@ -1,0 +1,7 @@
+.display {
+    background-position: center;
+    background-size: cover;
+    height: 480px;
+    width: 640px;
+    background-color: aqua;
+}
