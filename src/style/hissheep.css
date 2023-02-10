@@ -1,0 +1,8 @@
+.hissheep {
+    font-size: 100px;
+    color: rgb(255, 223, 127);
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -50%) rotate(136deg);
+}

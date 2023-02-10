@@ -1,0 +1,17 @@
+.input {
+    outline: none;
+    position: absolute;
+    left: 50%;
+    top: 6%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    border: #aaa solid 2px;
+}
+
+@media screen and (max-width: 544px) {
+    .input {
+        width: 80%;
+    }
+}

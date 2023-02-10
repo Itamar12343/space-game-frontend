@@ -1,0 +1,11 @@
+.box {
+    height: 86vh;
+    width: 90vw;
+    background-color: aquamarine;
+    border-radius: 10px;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    top: 54%;
+    transform: translate(-50%, -50%);
+}

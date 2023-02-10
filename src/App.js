@@ -1,19 +1,27 @@
 //import {useRef, useState} from "react"
-import "./app.css";
+import store from "./redux/store";
+import { useState } from "react";
 import io from "socket.io-client";
-const socket = io.connect("https://space-game-backend.onrender.com/");
+import Box from "./components/box";
+import Input from "./components/input";
+const socket = io.connect("http://localhost:3001");
 
 function App() {
+  const [room, setRoom] = useState(null);
  
-  socket.emit("stream", "helghuilo");
-
-  socket.on("stream", data=>{
-    console.log(data);
+  store.subscribe(()=>{
+    setRoom(store.getState());
   });
+  //socket.emit("stream", "helghuilo");
+
+  /*socket.on("stream", data=>{
+    console.log(data);
+  });*/
 
   return (
     <div className="App">
-      <h1>gfhjj</h1>
+      <Input/>
+      <Box/>
     </div>
   );
 }
