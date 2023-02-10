@@ -9,7 +9,6 @@ const Hissheep = () => {
 
     socket.on("space_sheep_position",data=>{
         setLeft(data);
-        console.log(data);
     });
 
     return ( 

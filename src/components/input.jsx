@@ -1,5 +1,4 @@
 import {useDispatch} from "react-redux";
-import { useState } from "react";
 import "../style/input.css";
 import io from "socket.io-client";
 const socket = io.connect("http://localhost:3001");

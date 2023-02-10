@@ -19,7 +19,6 @@ const Mysheep = () => {
         if(key === "ArrowRight"){
             if(left < 90){
                 let leftPosition = left + 10;
-                console.log(leftPosition);
                 socket.emit("space_sheep_position",{ leftPosition, room});
                 setleft(prev=> prev + 10);
             }
@@ -27,7 +26,6 @@ const Mysheep = () => {
         if(key === "ArrowLeft"){
             if(left > 10){
                 let leftPosition = left - 10;
-                console.log(leftPosition);
                 socket.emit("space_sheep_position",{ leftPosition, room});
                 setleft(prev=> prev - 10);
             }
