@@ -1,7 +1,7 @@
 import store from "../redux/store";
 import {useDispatch} from "react-redux";
 import io from "socket.io-client";
-const socket = io.connect("https://space-game-backend.onrender.com/");
+const socket = io.connect("http://localhost:3001");
 
 const ManageBackend = () => {
     const dispatch = useDispatch();

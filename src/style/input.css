@@ -2,7 +2,7 @@
     outline: none;
     position: absolute;
     left: 50%;
-    top: 6%;
+    top: 40px;
     transform: translate(-50%, -50%);
     font-size: 30px;
     padding: 10px;
@@ -10,8 +10,32 @@
     border: #aaa solid 2px;
 }
 
+.join-btn {
+    border: none;
+    background-color: rgb(138, 255, 198);
+    border-radius: 10px;
+    font-size: 40px;
+    padding: 6px;
+    position: absolute;
+    right: 26%;
+    top: 40px;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.join-btn:active {
+    transform: translate(-50%, -50%) scale(1.5);
+}
+
 @media screen and (max-width: 544px) {
     .input {
         width: 80%;
+    }
+}
+
+@media screen and (max-width: 1215px) {
+    .join-btn {
+        right: 4%;
     }
 }
