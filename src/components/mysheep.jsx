@@ -1,4 +1,4 @@
-import store from "../redux/store";
+import {useDispatch} from "react-redux";
 import "../style/mysheep.css";
 import {RocketTakeoffFill} from "react-bootstrap-icons";
 import { useState } from "react";
@@ -8,10 +8,8 @@ const socket = io.connect("http://localhost:3001");
 const Mysheep = () => {
     const [left, setleft] = useState(50);
     const [room, setRoom] = useState(null);
+    const dispatch = useDispatch();
 
-    store.subscribe(()=>{
-        setRoom(store.getState());
-      });
 
     document.onkeydown = (e)=>{
         let key = e.key;
@@ -19,14 +17,16 @@ const Mysheep = () => {
         if(key === "ArrowRight"){
             if(left < 90){
                 let leftPosition = left + 10;
-                socket.emit("space_sheep_position",{ leftPosition, room});
+                //socket.emit("space_sheep_position",{ leftPosition, room});
+                dispatch({type: "set-position", text: leftPosition});
                 setleft(prev=> prev + 10);
             }
         }
         if(key === "ArrowLeft"){
             if(left > 10){
                 let leftPosition = left - 10;
-                socket.emit("space_sheep_position",{ leftPosition, room});
+                //socket.emit("space_sheep_position",{ leftPosition, room});
+                dispatch({type: "set-position", text: leftPosition});
                 setleft(prev=> prev - 10);
             }
         }

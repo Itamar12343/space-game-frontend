@@ -1,15 +1,14 @@
 import {useDispatch} from "react-redux";
 import "../style/input.css";
-import io from "socket.io-client";
-const socket = io.connect("http://localhost:3001");
 
 const Input = () => {
     const dispatch = useDispatch();
 
+
     function joinRoom(e){
         if(e.target.value.length > 0){
-            socket.emit("join_room", e.target.value);
             dispatch({type:"set", text: e.target.value});
+            //console.log(e.target.value);
         }
     }
     return (  

@@ -1,3 +1,4 @@
+import store from "../redux/store";
 import "../style/hissheep.css";
 import {RocketTakeoffFill} from "react-bootstrap-icons";
 import io from "socket.io-client";
@@ -7,9 +8,14 @@ const socket = io.connect("http://localhost:3001");
 const Hissheep = () => {
     const [left, setLeft] = useState(null);
 
-    socket.on("space_sheep_position",data=>{
-        setLeft(data);
+    const unsubscribe = store.subscribe(()=>{
+        let gotPosition = store.getState().GotPositionReducer;
+        if(gotPosition !== 0){
+           console.log(gotPosition);
+        }
+        unsubscribe();
     });
+
 
     return ( 
         <div>
