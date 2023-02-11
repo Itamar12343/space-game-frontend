@@ -10,16 +10,14 @@ const Hissheep = () => {
 
     const unsubscribe = store.subscribe(()=>{
         let gotPosition = store.getState().GotPositionReducer;
-        if(gotPosition !== 0){
-           console.log(gotPosition);
-        }
+           setLeft(gotPosition);
         unsubscribe();
     });
 
 
     return ( 
         <div>
-            <RocketTakeoffFill style={{left: left ? `${left}%` : "90%"}} className="hissheep"/>
+            <RocketTakeoffFill style={{left: left ? `${left}%` : "50%"}} className="hissheep"/>
         </div>
      );
 }

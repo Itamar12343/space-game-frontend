@@ -24,6 +24,7 @@ const ManageBackend = () => {
 
   socket.on("space_sheep_position",data=>{
     dispatch({type: "set-gotPosition", text: data});
+    //console.log(data);
   });
 
 
