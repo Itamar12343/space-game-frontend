@@ -5,7 +5,6 @@ import "../style/input.css";
 const Input = () => {
     const dispatch = useDispatch();
     const [room, setRoom] = useState(null);
-    const [currentRoom, setCurrentRoom] = useState(null);
 
 
     function updateRoom(e){
@@ -15,7 +14,9 @@ const Input = () => {
 
     }
     function joinRoom(){
-        dispatch({type:"set", text: room});
+        if(room !== null){
+            dispatch({type:"set", text: room});
+        }
     }
     return (  
         <>
