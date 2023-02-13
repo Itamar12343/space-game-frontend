@@ -8,6 +8,9 @@ const ManageBackend = () => {
     const dispatch = useDispatch();
     const [prevRoom, setPrevRoom] = useState(null);
 
+    socket.on("reject_room",data=>{
+      console.log(data);
+    });
     
   const unsubscribe = store.subscribe(()=>{
     
