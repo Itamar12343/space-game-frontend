@@ -8,9 +8,6 @@ const ManageBackend = () => {
     const dispatch = useDispatch();
     const [prevRoom, setPrevRoom] = useState(null);
 
-    socket.on("reject_room",data=>{
-      console.log(data);
-    });
     
   const unsubscribe = store.subscribe(()=>{
     
@@ -32,11 +29,18 @@ const ManageBackend = () => {
     unsubscribe();
   });
 
-  socket.on("space_sheep_position",data=>{
+  socket.off("space_sheep_position").on("space_sheep_position",data=>{
     dispatch({type: "set-gotPosition", text: data});
     //console.log(data);
   });
 
+  socket.off("reject_room").on("reject_room",()=>{
+    dispatch({type: "rejectRoom", text: "gh"});
+  });
+
+  socket.off("aprove_room").on("aprove_room",()=>{
+    dispatch({type: "aproveRoom", text: "gh"});
+  });
 
     return ( 
         <div>

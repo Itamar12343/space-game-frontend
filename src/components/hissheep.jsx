@@ -1,9 +1,7 @@
 import store from "../redux/store";
 import "../style/hissheep.css";
 import {RocketTakeoffFill} from "react-bootstrap-icons";
-import io from "socket.io-client";
 import { useState } from "react";
-const socket = io.connect("http://localhost:3001");
 
 const Hissheep = () => {
     const [left, setLeft] = useState(null);

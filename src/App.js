@@ -4,6 +4,7 @@ import { useState } from "react";
 import io from "socket.io-client";
 import Box from "./components/box";
 import Input from "./components/input";
+import Blocker from "./components/blocker";
 const socket = io.connect("http://localhost:3001");
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <div className="App">
+      <Blocker/>
       <Input/>
       <Box/>
     </div>

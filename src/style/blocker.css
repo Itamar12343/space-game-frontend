@@ -1,0 +1,42 @@
+.block-box {
+    position: absolute;
+    left: 50%;
+    top: 54%;
+    transform: translate(-50%, -50%);
+    height: 84vh;
+    width: 90vw;
+    border-radius: 10px;
+    background-color: rgb(0, 0, 0, 0.4);
+    z-index: 1;
+    backdrop-filter: blur(8px);
+    pointer-events: none;
+    //animation: color-change 4s infinite;
+    opacity: 70%;
+}
+
+@keyframes color-change {
+    0% {
+        background-color: rgb(255, 255, 255, 0.4);
+    }
+    25% {
+        background-color: rgba(248, 214, 104, 0.2);
+    }
+    50% {
+        background-color: rgba(117, 194, 253, 0.2);
+    }
+    75% {
+        background-color: rgba(109, 249, 119, 0.2);
+    }
+    100% {
+        background-color: rgb(255, 255, 255, 0.4);
+    }
+}
+
+.block-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    text-align: center;
+}
