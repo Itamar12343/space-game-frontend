@@ -17,6 +17,9 @@ const Blocker = () => {
                 setVisibility("hide");
                 setText("this game is alredy full");
             }
+            if(approveRoom === "waiting"){
+                setText("waiting for another player");
+            }
         }
         unsubscribe();
     });

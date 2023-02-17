@@ -17,6 +17,7 @@ const ManageBackend = () => {
 
     if(position !== 0){
         socket.emit("space_sheep_position",{room, position});
+        console.log("send position");
     }
 
     if(room !== "" && room !== prevRoom){
@@ -40,6 +41,10 @@ const ManageBackend = () => {
 
   socket.off("aprove_room").on("aprove_room",()=>{
     dispatch({type: "aproveRoom", text: "gh"});
+  });
+
+  socket.off("waiting_room").on("waiting_room",()=>{
+    dispatch({type: "waitingRoom", text: "gh"});
   });
 
     return ( 

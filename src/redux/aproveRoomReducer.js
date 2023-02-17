@@ -4,6 +4,8 @@ function AproveRoomReducer(state = null, action) {
             return true;
         case "rejectRoom":
             return false;
+        case "waitingRoom":
+            return "waiting";
         default:
             return state;
     }
