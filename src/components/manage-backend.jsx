@@ -17,7 +17,7 @@ const ManageBackend = () => {
 
     if(position !== 0){
         socket.emit("space_sheep_position",{room, position});
-        console.log("send position");
+        //console.log("send position");
     }
 
     if(room !== "" && room !== prevRoom){
