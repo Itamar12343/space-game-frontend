@@ -1,7 +1,7 @@
-function RoomStateReducer(state = null, action) {
+function RoomStateReducer(state = false, action) {
     switch (action.type) {
         case "setRoomState":
-            return action.text;
+            return true;
         default:
             return state
     }

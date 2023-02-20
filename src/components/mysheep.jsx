@@ -1,15 +1,46 @@
+import store from "../redux/store";
 import {useDispatch} from "react-redux";
 import "../style/mysheep.css";
 import {RocketTakeoffFill} from "react-bootstrap-icons";
 import { useState } from "react";
+import { useRef } from "react";
 
 const Mysheep = () => {
     const [left, setleft] = useState(50);
     const dispatch = useDispatch();
+    const [RoomState, setRoomState] = useState(false);
+    const [prevRoom, setPrevRoom] = useState(null);
+    const shootref = useRef(null);
+    let shoot_wait = false;
 
+    const unsubscribe = store.subscribe(()=>{
+        let gotRoomState = store.getState().AproveRoomReducer;
+        
+        if(gotRoomState === true && gotRoomState !== prevRoom){
+            setRoomState(true);
+            setPrevRoom(true);
+        }
+        if(gotRoomState === false && gotRoomState !== prevRoom){
+            setRoomState(false);
+            setPrevRoom(false);
+        }
+        unsubscribe();
+    });
 
     document.onkeydown = (e)=>{
+        if(RoomState === true){
         let key = e.key;
+
+        if(key === "Enter"){
+            if(shoot_wait === false){
+            shoot_wait = true;
+            shootref.current.classList.add("shoot-animation");
+            setTimeout(() => {
+                shootref.current.classList.remove("shoot-animation");
+                shoot_wait = false;
+            }, 400);
+        }
+        }
      
         if(key === "ArrowRight"){
             if(left < 90){
@@ -26,10 +57,12 @@ const Mysheep = () => {
             }
         }
     }
+    }
 
     return ( 
         <div>
             <RocketTakeoffFill style={{left: left ? `${left}%` : "50%"}} className="mysheep"/>
+            <div ref={shootref} style={{left: left ? `${left}%` : "50%"}} className="shoot"></div>
         </div>
      );
 }
