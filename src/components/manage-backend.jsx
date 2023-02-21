@@ -13,6 +13,10 @@ const ManageBackend = () => {
     
     let room = store.getState().RoomReducer;
     let position = store.getState().PositionReducer;
+    let shoot = store.getState().ShootReducer;
+    if(shoot === true){
+      socket.emit("shoot", room);
+    }
 
 
     if(position !== 0){
@@ -36,15 +40,18 @@ const ManageBackend = () => {
   });
 
   socket.off("reject_room").on("reject_room",()=>{
-    dispatch({type: "rejectRoom", text: "gh"});
+    dispatch({type: "rejectRoom"});
   });
 
   socket.off("aprove_room").on("aprove_room",()=>{
-    dispatch({type: "aproveRoom", text: "gh"});
+    dispatch({type: "aproveRoom"});
   });
 
   socket.off("waiting_room").on("waiting_room",()=>{
-    dispatch({type: "waitingRoom", text: "gh"});
+    dispatch({type: "waitingRoom"});
+  });
+  socket.off("shoot").on("shoot",()=>{
+    console.log("yyyyyyyhaaaa");
   });
 
     return ( 

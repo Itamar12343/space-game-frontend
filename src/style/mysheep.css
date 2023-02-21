@@ -7,10 +7,10 @@
     transform: translate(-50%, -50%) rotate(-44deg);
 }
 
-.shoot {
+.my-shoot {
     height: 80px;
     width: 10px;
-    background-color: blue;
+    background-color: rgb(85, 85, 253);
     position: absolute;
     left: 50%;
     top: 74%;
@@ -19,14 +19,14 @@
     opacity: 0;
 }
 
-.shoot-animation {
+.my-shoot-animation {
     opacity: 1;
-    animation: shoot 0.5s;
+    animation: my-shoot 0.5s;
 }
 
-@keyframes shoot {
+@keyframes my-shoot {
     0% {
-        top: 74%;
+        top: 70%;
     }
     100% {
         top: 10%;

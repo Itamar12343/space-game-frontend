@@ -6,3 +6,29 @@
     top: 10%;
     transform: translate(-50%, -50%) rotate(136deg);
 }
+
+.his-shoot {
+    height: 80px;
+    width: 10px;
+    background-color: rgb(255, 237, 41);
+    position: absolute;
+    left: 50%;
+    top: 74%;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+    opacity: 0;
+}
+
+.his-shoot-animation {
+    opacity: 1;
+    animation: his-shoot 0.5s;
+}
+
+@keyframes his-shoot {
+    0% {
+        top: 30%;
+    }
+    100% {
+        top: 94%;
+    }
+}

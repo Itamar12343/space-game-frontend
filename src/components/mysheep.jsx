@@ -34,9 +34,11 @@ const Mysheep = () => {
         if(key === "Enter"){
             if(shoot_wait === false){
             shoot_wait = true;
-            shootref.current.classList.add("shoot-animation");
+            dispatch({type: "setShootTrue"});
+            dispatch({type: "setShootFalse"});
+            shootref.current.classList.add("my-shoot-animation");
             setTimeout(() => {
-                shootref.current.classList.remove("shoot-animation");
+                shootref.current.classList.remove("my-shoot-animation");
                 shoot_wait = false;
             }, 400);
         }
@@ -62,7 +64,7 @@ const Mysheep = () => {
     return ( 
         <div>
             <RocketTakeoffFill style={{left: left ? `${left}%` : "50%"}} className="mysheep"/>
-            <div ref={shootref} style={{left: left ? `${left}%` : "50%"}} className="shoot"></div>
+            <div ref={shootref} style={{left: left ? `${left}%` : "50%"}} className="my-shoot"></div>
         </div>
      );
 }
