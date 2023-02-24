@@ -10,7 +10,6 @@
     z-index: 1;
     backdrop-filter: blur(8px);
     pointer-events: none;
-    //animation: color-change 4s infinite;
     opacity: 70%;
 }
 
@@ -39,4 +38,35 @@
     transform: translate(-50%, -50%);
     font-size: 60px;
     text-align: center;
+}
+
+.block-count {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    text-align: center;
+    padding: 20px;
+    padding-inline: 30px;
+    animation: count-down 4s;
+}
+
+@keyframes count-down {
+    0% {
+        background-color: rgb(128, 221, 255);
+        border-radius: 50%;
+    }
+    25% {
+        background-color: rgb(138, 255, 157);
+        border-radius: 10%;
+    }
+    50% {
+        background-color: rgb(254, 254, 99);
+        border-radius: 60%;
+    }
+    75% {
+        background-color: rgb(136, 252, 125);
+        border-radius: 40%;
+    }
 }

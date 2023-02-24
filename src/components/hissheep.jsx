@@ -10,7 +10,16 @@ const Hissheep = () => {
 
     const unsubscribe = store.subscribe(()=>{
         let gotPosition = store.getState().GotPositionReducer;
-           setLeft(gotPosition);
+        let gotShoot = store.getState().GotShootReducer;
+
+        if(gotShoot === true){
+            shootref.current.classList.add("his-shoot-animation");
+            setTimeout(() => {
+                shootref.current.classList.remove("his-shoot-animation");
+            }, 400);
+        }
+
+        setLeft(gotPosition);
         unsubscribe();
     });
 

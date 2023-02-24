@@ -14,6 +14,7 @@ const ManageBackend = () => {
     let room = store.getState().RoomReducer;
     let position = store.getState().PositionReducer;
     let shoot = store.getState().ShootReducer;
+
     if(shoot === true){
       socket.emit("shoot", room);
     }
@@ -51,7 +52,10 @@ const ManageBackend = () => {
     dispatch({type: "waitingRoom"});
   });
   socket.off("shoot").on("shoot",()=>{
-    console.log("yyyyyyyhaaaa");
+    dispatch({type: "setGotShootTrue"});
+    setTimeout(() => {
+      dispatch({type: "setGotShootFalse"});
+    }, 100);
   });
 
     return ( 

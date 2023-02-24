@@ -11,7 +11,7 @@ const Mysheep = () => {
     const [RoomState, setRoomState] = useState(false);
     const [prevRoom, setPrevRoom] = useState(null);
     const shootref = useRef(null);
-    let shoot_wait = false;
+    const [shoot_wait, setShootWait] = useState(false);
 
     const unsubscribe = store.subscribe(()=>{
         let gotRoomState = store.getState().AproveRoomReducer;
@@ -33,13 +33,13 @@ const Mysheep = () => {
 
         if(key === "Enter"){
             if(shoot_wait === false){
-            shoot_wait = true;
+            setShootWait(true);
             dispatch({type: "setShootTrue"});
             dispatch({type: "setShootFalse"});
             shootref.current.classList.add("my-shoot-animation");
             setTimeout(() => {
                 shootref.current.classList.remove("my-shoot-animation");
-                shoot_wait = false;
+                setShootWait(false);
             }, 400);
         }
         }

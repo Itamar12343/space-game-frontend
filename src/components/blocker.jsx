@@ -6,12 +6,26 @@ import { useState } from "react";
 const Blocker = () => {
     const [visibility, setVisibility] = useState("hide");
     const [text, setText] = useState("create or join a game first");
+    const [count, setCount] = useState(null);
 
     const unsubscribe = store.subscribe(()=>{
         let approveRoom = store.getState().AproveRoomReducer;
         if(approveRoom !== null){
             if(approveRoom === true){
-                setVisibility("visible");
+                setText("");
+                setCount(3);
+                setTimeout(() => {
+                    setCount(2);
+                    setTimeout(() => {
+                        setCount(1);
+                        setTimeout(() => {
+                            setCount("redy");
+                            setTimeout(() => {
+                                setVisibility("visible");
+                            }, 1000);
+                        }, 1000);
+                    }, 1000);
+                }, 1000);
             }
             if(approveRoom === false){
                 setVisibility("hide");
@@ -27,6 +41,7 @@ const Blocker = () => {
     return ( 
         <motion.div initial={{opacity: 1}} animate={{opacity: visibility === "visible" ? 0 : 1}} className="block-box">
             <h1 className="block-text">{text}</h1>
+            {count !== null && <h1 className="block-count">{count}</h1>}
         </motion.div>
      );
 }
