@@ -4,7 +4,6 @@ import "../style/mysheep.css";
 import {RocketTakeoffFill} from "react-bootstrap-icons";
 import { useState } from "react";
 import { useRef } from "react";
-import { useEffect } from "react";
 
 const Mysheep = () => {
     const [left, setleft] = useState(50);
@@ -30,10 +29,6 @@ const Mysheep = () => {
         }
         unsubscribe();
     });
-
-    useEffect(()=>{
-        console.log(shoot_wait);
-    },[shoot_wait]);
 
     document.onkeydown = (e)=>{
         if(RoomState === true){

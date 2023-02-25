@@ -7,6 +7,7 @@ const socket = io.connect("http://localhost:3001");
 const ManageBackend = () => {
     const dispatch = useDispatch();
     const [prevRoom, setPrevRoom] = useState(null);
+    const [prevSoot, setPrevShoot] = useState(null);
 
     
   const unsubscribe = store.subscribe(()=>{
@@ -14,6 +15,13 @@ const ManageBackend = () => {
     let room = store.getState().RoomReducer;
     let position = store.getState().PositionReducer;
     let shoot = store.getState().ShootReducer;
+    let shootPosition = store.getState().ShootPositionReducer;
+
+
+    /*if(shootPosition !== prevSoot){
+      console.log(shootPosition.position);
+      setPrevShoot(shootPosition);
+    }*/
 
     if(shoot === true){
       socket.emit("shoot", room);
