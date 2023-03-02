@@ -8,6 +8,8 @@ const ManageBackend = () => {
     const dispatch = useDispatch();
     const [prevRoom, setPrevRoom] = useState(null);
     const [prevSoot, setPrevShoot] = useState(null);
+    const [prevShootPosition, setPrevShootPosition] = useState(null);
+
 
     
   const unsubscribe = store.subscribe(()=>{
@@ -16,7 +18,13 @@ const ManageBackend = () => {
     let position = store.getState().PositionReducer;
     let shoot = store.getState().ShootReducer;
     let shootPosition = store.getState().ShootPositionReducer;
+    //console.log(gotShootPosition);
 
+    if(shootPosition !== prevShootPosition){
+        console.log(shootPosition);
+        console.log("hello world");
+        setPrevShootPosition(shootPosition);
+    }
 
     /*if(shootPosition !== prevSoot){
       console.log(shootPosition.position);
