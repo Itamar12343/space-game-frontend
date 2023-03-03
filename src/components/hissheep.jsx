@@ -24,7 +24,7 @@ const Hissheep = () => {
                 setShoot_wait(false);
                 let shootLeft = shootref.current.style.left;
                 dispatch({type: "setShootPosition", text: {position: shootLeft, uuid: crypto.randomUUID()}});
-                console.log("shootLeft");
+                //console.log("shootLeft");
             }, 400);
         }
         if(shoot_wait === false){

@@ -1,9 +1,10 @@
 function ShootPositionReducer(state = null, action) {
     switch (action.type) {
         case "setShootPosition":
-            return action.text
+            return action.text;
+            break;
         default:
-            return state
+            return state;
     }
 }
 export default ShootPositionReducer;

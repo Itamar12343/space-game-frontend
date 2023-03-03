@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const Blocker = () => {
     const [visibility, setVisibility] = useState("hide");
-    const [text, setText] = useState("create or join a game first");
+    const [text, setText] = useState("create or join a game");
     const [count, setCount] = useState(null);
 
     const unsubscribe = store.subscribe(()=>{

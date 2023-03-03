@@ -7,7 +7,6 @@ const socket = io.connect("http://localhost:3001");
 const ManageBackend = () => {
     const dispatch = useDispatch();
     const [prevRoom, setPrevRoom] = useState(null);
-    const [prevSoot, setPrevShoot] = useState(null);
     const [prevShootPosition, setPrevShootPosition] = useState(null);
 
 
@@ -21,10 +20,14 @@ const ManageBackend = () => {
     //console.log(gotShootPosition);
 
     if(shootPosition !== prevShootPosition){
-        console.log(shootPosition);
-        console.log("hello world");
+        let myPosition = position + "%";
+        //console.log(shootPosition.position + " " + myPosition);
+        if(shootPosition.position == myPosition){
+          alert("yessss");
+          socket.emit("I lost");
+        }
         setPrevShootPosition(shootPosition);
-    }
+      }
 
     /*if(shootPosition !== prevSoot){
       console.log(shootPosition.position);

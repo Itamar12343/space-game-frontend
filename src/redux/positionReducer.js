@@ -1,4 +1,4 @@
-function PositionReducer(state = 0, action) {
+function PositionReducer(state = 50, action) {
     switch (action.type) {
         case "set-position":
             return action.text;
