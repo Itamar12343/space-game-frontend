@@ -13,9 +13,15 @@ const Mysheep = () => {
     const shootref = useRef(null);
     const [shoot_wait, setShootWait] = useState(false);
     const [shoot_left, setShoot_left] = useState(50);
+    const [isLost, setIsLost] = useState(false);
 
     const unsubscribe = store.subscribe(()=>{
         let gotRoomState = store.getState().AproveRoomReducer;
+        let lost = store.getState().LostReducer;
+
+        if(lost === true){
+            setIsLost(true);
+        }
         
         if(gotRoomState === true && gotRoomState !== prevRoom){
             setTimeout(() => {
@@ -77,7 +83,7 @@ const Mysheep = () => {
         <div>
             <RocketTakeoffFill style={{left: left ? `${left}%` : "50%"}} className="mysheep"/>
             <div ref={shootref} style={{left: shoot_left ? `${shoot_left}%` : "50%"}} className="my-shoot"></div>
-            <div className="my-expload"></div>
+            {isLost && <div className="my-expload"></div>}
         </div>
      );
 }

@@ -6,3 +6,4 @@ function LostReducer(state = false, action) {
             return state;
     }
 }
+export default LostReducer;

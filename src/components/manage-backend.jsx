@@ -17,13 +17,14 @@ const ManageBackend = () => {
     let position = store.getState().PositionReducer;
     let shoot = store.getState().ShootReducer;
     let shootPosition = store.getState().ShootPositionReducer;
-    //console.log(gotShootPosition);
 
     if(shootPosition !== prevShootPosition){
         let myPosition = position + "%";
         //console.log(shootPosition.position + " " + myPosition);
-        if(shootPosition.position == myPosition){
-          alert("yessss");
+        if(shootPosition.position === myPosition){
+          myPosition = null;
+          console.log("lost");
+          dispatch({type:"setLost"});
           socket.emit("I lost");
         }
         setPrevShootPosition(shootPosition);
