@@ -47,7 +47,7 @@ const Mysheep = () => {
                 dispatch({type: "setShootTrue"});
                 setTimeout(() => {
                 dispatch({type: "setShootFalse"});
-                }, 100);
+                }, 200);
                 shootref.current.classList.add("my-shoot-animation");
                 setTimeout(() => {
                 shootref.current.classList.remove("my-shoot-animation");

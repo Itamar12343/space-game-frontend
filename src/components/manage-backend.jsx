@@ -19,15 +19,15 @@ const ManageBackend = () => {
     let shootPosition = store.getState().ShootPositionReducer;
 
     if(shootPosition !== prevShootPosition){
+      console.log("loop");
+      setPrevShootPosition(shootPosition);
         let myPosition = position + "%";
         //console.log(shootPosition.position + " " + myPosition);
         if(shootPosition.position === myPosition){
-          myPosition = null;
           console.log("lost");
-          dispatch({type:"setLost"});
-          socket.emit("I lost");
+          //dispatch({type:"setLost"});
+          //socket.emit("I lost");
         }
-        setPrevShootPosition(shootPosition);
       }
 
     /*if(shootPosition !== prevSoot){
@@ -75,7 +75,7 @@ const ManageBackend = () => {
     dispatch({type: "setGotShootTrue"});
     setTimeout(() => {
       dispatch({type: "setGotShootFalse"});
-    }, 100);
+    }, 200);
   });
 
     return ( 
