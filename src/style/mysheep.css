@@ -24,6 +24,31 @@
     animation: my-shoot 0.5s;
 }
 
+.my-expload {
+    height: 300px;
+    width: 300px;
+    background-image: url("../imgs/exploade.png");
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: my-expload 1s;
+}
+
+@keyframes my-expload {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+}
+
 @keyframes my-shoot {
     0% {
         top: 70%;

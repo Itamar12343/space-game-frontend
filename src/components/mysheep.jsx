@@ -77,6 +77,7 @@ const Mysheep = () => {
         <div>
             <RocketTakeoffFill style={{left: left ? `${left}%` : "50%"}} className="mysheep"/>
             <div ref={shootref} style={{left: shoot_left ? `${shoot_left}%` : "50%"}} className="my-shoot"></div>
+            <div className="my-expload"></div>
         </div>
      );
 }
