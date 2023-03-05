@@ -11,7 +11,7 @@ const Blocker = () => {
     const unsubscribe = store.subscribe(()=>{
         let approveRoom = store.getState().AproveRoomReducer;
         if(approveRoom !== null){
-            if(approveRoom === true){
+            if(approveRoom === true && approveRoom !== "game over"){
                 setText("");
                 setCount(3);
                 setTimeout(() => {
@@ -21,6 +21,7 @@ const Blocker = () => {
                         setTimeout(() => {
                             setCount("redy");
                             setTimeout(() => {
+                                setCount("");
                                 setVisibility("visible");
                             }, 1000);
                         }, 1000);
@@ -34,6 +35,7 @@ const Blocker = () => {
             if(approveRoom === "waiting"){
                 setText("waiting for another player");
             }
+
         }
         unsubscribe();
     });

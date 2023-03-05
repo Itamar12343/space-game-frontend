@@ -9,13 +9,16 @@ const ManageBackend = () => {
     const dispatch = useDispatch();
     const [prevRoom, setPrevRoom] = useState(null);
     const [prevShootPosition, setPrevShootPosition] = useState(null);
-    const [gameOver, setGameOver] = useState(false);
+    const [gotHit, setgotHit] = useState(false);
 
   useEffect(()=>{
-    if(gameOver === true){
-      dispatch({type: "setLost"});
+    if(gotHit === true){
+      dispatch({type: "setHit"});
+      setTimeout(() => {
+        dispatch({type: "setHitFalse"});
+      }, 1000);
     }
-  },[gameOver]);
+  },[gotHit]);
     
   const unsubscribe = store.subscribe(()=>{
     
@@ -25,13 +28,12 @@ const ManageBackend = () => {
     let shootPosition = store.getState().ShootPositionReducer;
 
     if(shootPosition !== prevShootPosition){
-      console.log("loop");
       setPrevShootPosition(shootPosition);
         let myPosition = position + "%";
         //console.log(shootPosition.position + " " + myPosition);
         if(shootPosition.position === myPosition){
-          setGameOver(true);
-          socket.emit("game over");
+          setgotHit(true);
+          socket.emit("hit");
         }
       }
 

@@ -13,15 +13,19 @@ const Mysheep = () => {
     const shootref = useRef(null);
     const [shoot_wait, setShootWait] = useState(false);
     const [shoot_left, setShoot_left] = useState(50);
-    const [isLost, setIsLost] = useState(false);
+    const [isHit, setisHit] = useState(false);
 
     const unsubscribe = store.subscribe(()=>{
         let gotRoomState = store.getState().AproveRoomReducer;
-        let lost = store.getState().LostReducer;
+        let hit = store.getState().HitReducer;
 
-        if(lost === true){
-            setIsLost(true);
-            window.location.reload();        }
+        if(hit === true){
+            console.log("hit");
+            setisHit(true);
+            setTimeout(() => {
+                setisHit(false);
+            }, 1000);
+        }
         
         if(gotRoomState === true && gotRoomState !== prevRoom){
             setTimeout(() => {
@@ -83,7 +87,7 @@ const Mysheep = () => {
         <div>
             <RocketTakeoffFill style={{left: left ? `${left}%` : "50%"}} className="mysheep"/>
             <div ref={shootref} style={{left: shoot_left ? `${shoot_left}%` : "50%"}} className="my-shoot"></div>
-            {isLost && <div style={{left: left ? `${left}%` : "50%"}} className="my-expload"></div>}
+            {isHit && <div style={{left: left ? `${left}%` : "50%"}} className="my-expload"></div>}
         </div>
      );
 }
