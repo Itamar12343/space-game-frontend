@@ -13,6 +13,7 @@ const ManageBackend = () => {
 
   useEffect(()=>{
     if(gotHit === true){
+      setgotHit(false);
       console.log("got hit");
       dispatch({type: "setHit"});
       setTimeout(() => {
@@ -34,6 +35,7 @@ const ManageBackend = () => {
         //console.log(shootPosition.position + " " + myPosition);
         if(shootPosition.position === myPosition){
           setgotHit(true);
+          console.log("jhgf");
           socket.emit("hit");
         }
       }
