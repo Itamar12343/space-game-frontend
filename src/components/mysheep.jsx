@@ -21,7 +21,7 @@ const Mysheep = () => {
 
         if(lost === true){
             setIsLost(true);
-        }
+            window.location.reload();        }
         
         if(gotRoomState === true && gotRoomState !== prevRoom){
             setTimeout(() => {
@@ -47,7 +47,7 @@ const Mysheep = () => {
                 dispatch({type: "setShootTrue"});
                 setTimeout(() => {
                 dispatch({type: "setShootFalse"});
-                }, 200);
+                }, 300);
                 shootref.current.classList.add("my-shoot-animation");
                 setTimeout(() => {
                 shootref.current.classList.remove("my-shoot-animation");
@@ -83,7 +83,7 @@ const Mysheep = () => {
         <div>
             <RocketTakeoffFill style={{left: left ? `${left}%` : "50%"}} className="mysheep"/>
             <div ref={shootref} style={{left: shoot_left ? `${shoot_left}%` : "50%"}} className="my-shoot"></div>
-            {isLost && <div className="my-expload"></div>}
+            {isLost && <div style={{left: left ? `${left}%` : "50%"}} className="my-expload"></div>}
         </div>
      );
 }

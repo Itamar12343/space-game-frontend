@@ -2,14 +2,20 @@ import store from "../redux/store";
 import {useDispatch} from "react-redux";
 import io from "socket.io-client";
 import { useState } from "react";
+import { useEffect } from "react";
 const socket = io.connect("http://localhost:3001");
 
 const ManageBackend = () => {
     const dispatch = useDispatch();
     const [prevRoom, setPrevRoom] = useState(null);
     const [prevShootPosition, setPrevShootPosition] = useState(null);
+    const [gameOver, setGameOver] = useState(false);
 
-
+  useEffect(()=>{
+    if(gameOver === true){
+      dispatch({type: "setLost"});
+    }
+  },[gameOver]);
     
   const unsubscribe = store.subscribe(()=>{
     
@@ -24,9 +30,8 @@ const ManageBackend = () => {
         let myPosition = position + "%";
         //console.log(shootPosition.position + " " + myPosition);
         if(shootPosition.position === myPosition){
-          console.log("lost");
-          dispatch({type: "setLost", text: "jyg"});
-          socket.emit("I lost");
+          setGameOver(true);
+          socket.emit("game over");
         }
       }
 
@@ -71,6 +76,7 @@ const ManageBackend = () => {
   socket.off("waiting_room").on("waiting_room",()=>{
     dispatch({type: "waitingRoom"});
   });
+
   socket.off("shoot").on("shoot",()=>{
     dispatch({type: "setGotShootTrue"});
     setTimeout(() => {
