@@ -25,8 +25,8 @@ const ManageBackend = () => {
         //console.log(shootPosition.position + " " + myPosition);
         if(shootPosition.position === myPosition){
           console.log("lost");
-          //dispatch({type:"setLost"});
-          //socket.emit("I lost");
+          dispatch({type: "setLost", text: "jyg"});
+          socket.emit("I lost");
         }
       }
 
