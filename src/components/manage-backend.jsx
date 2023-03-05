@@ -13,11 +13,11 @@ const ManageBackend = () => {
 
   useEffect(()=>{
     if(gotHit === true){
-      setgotHit(false);
       console.log("got hit");
       dispatch({type: "setHit"});
       setTimeout(() => {
         dispatch({type: "setHitFalse"});
+        setgotHit(false);
       }, 1000);
     }
   },[gotHit]);
