@@ -5,6 +5,7 @@
     left: 50%;
     top: 90%;
     transform: translate(-50%, -50%) rotate(-44deg);
+    cursor: pointer;
 }
 
 .my-shoot {
@@ -35,6 +36,22 @@
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
     animation: my-expload 1s;
+}
+
+.left-arrow {
+    position: absolute;
+    left: 0%;
+    font-size: 50px;
+    top: 90%;
+    cursor: pointer;
+}
+
+.right-arrow {
+    position: absolute;
+    right: 0%;
+    font-size: 50px;
+    top: 90%;
+    cursor: pointer;
 }
 
 @keyframes my-expload {

@@ -1,7 +1,7 @@
 import store from "../redux/store";
 import {useDispatch} from "react-redux";
 import "../style/mysheep.css";
-import {RocketTakeoffFill} from "react-bootstrap-icons";
+import {ChevronLeft, ChevronRight, RocketTakeoffFill} from "react-bootstrap-icons";
 import { useState } from "react";
 import { useRef } from "react";
 
@@ -15,6 +15,39 @@ const Mysheep = () => {
     const [shoot_left, setShoot_left] = useState(50);
     const [isHit, setisHit] = useState(false);
 
+
+    function move_left(){
+        if(left > 10){
+            let leftPosition = left - 10;
+            dispatch({type: "set-position", text: leftPosition});
+            setleft(prev=> prev - 10);
+            setShoot_left(leftPosition);
+        }
+    }
+
+    function move_right(){
+        if(left < 90){
+            let leftPosition = left + 10;
+            dispatch({type: "set-position", text: leftPosition});
+            setleft(prev=> prev + 10);
+            setShoot_left(leftPosition);
+        }
+    }
+
+    function shoot(){
+         dispatch({type: "setShootTrue"});
+        setTimeout(() => {
+        dispatch({type: "setShootFalse"});
+         }, 300);
+        shootref.current.classList.add("my-shoot-animation");
+         setTimeout(() => {
+        shootref.current.classList.remove("my-shoot-animation");
+         },400)
+    }
+
+    
+    
+
     const unsubscribe = store.subscribe(()=>{
         let gotRoomState = store.getState().AproveRoomReducer;
         let hit = store.getState().HitReducer;
@@ -26,6 +59,7 @@ const Mysheep = () => {
                 setisHit(false);
             }, 1000);
         }
+
         
         if(gotRoomState === true && gotRoomState !== prevRoom){
             setTimeout(() => {
@@ -85,9 +119,11 @@ const Mysheep = () => {
 
     return ( 
         <div>
-            <RocketTakeoffFill style={{left: left ? `${left}%` : "50%"}} className="mysheep"/>
+            <RocketTakeoffFill onClick={shoot} style={{left: left ? `${left}%` : "50%"}} className="mysheep"/>
             <div ref={shootref} style={{left: shoot_left ? `${shoot_left}%` : "50%"}} className="my-shoot"></div>
             {isHit && <div style={{left: left ? `${left}%` : "50%"}} className="my-expload"></div>}
+            <ChevronLeft className="left-arrow" onClick={move_left}/>
+            <ChevronRight className="right-arrow" onClick={move_right}/>
         </div>
      );
 }
