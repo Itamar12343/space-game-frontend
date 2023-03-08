@@ -35,14 +35,19 @@ const Mysheep = () => {
     }
 
     function shoot(){
-         dispatch({type: "setShootTrue"});
-        setTimeout(() => {
-        dispatch({type: "setShootFalse"});
-         }, 300);
-        shootref.current.classList.add("my-shoot-animation");
-         setTimeout(() => {
-        shootref.current.classList.remove("my-shoot-animation");
-         },400)
+        if(shoot_wait === false){
+            setShoot_left(left);
+            setShootWait(true);
+            dispatch({type: "setShootTrue"});
+            setTimeout(() => {
+            dispatch({type: "setShootFalse"});
+            }, 300);
+            shootref.current.classList.add("my-shoot-animation");
+            setTimeout(() => {
+            shootref.current.classList.remove("my-shoot-animation");
+            setShootWait(false);
+        }, 400);
+    }
     }
 
     
