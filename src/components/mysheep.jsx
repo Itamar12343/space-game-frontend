@@ -58,7 +58,7 @@ const Mysheep = () => {
         let hit = store.getState().HitReducer;
 
         if(hit === true){
-            console.log("hit");
+            //console.log("hit");
             setisHit(true);
             setTimeout(() => {
                 setisHit(false);
