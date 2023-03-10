@@ -34,7 +34,7 @@ const ManageBackend = () => {
         //console.log(shootPosition.position + " " + myPosition);
         if(shootPosition.position === myPosition){
           setgotHit(true);
-          socket.emit("hit");
+          socket.emit("I got hit", room);
         }
       }
 
@@ -78,6 +78,10 @@ const ManageBackend = () => {
 
   socket.off("waiting_room").on("waiting_room",()=>{
     dispatch({type: "waitingRoom"});
+  });
+
+  socket.off("he got hit").on("he got hit",()=>{
+    console.log("he got hit");
   });
 
   socket.off("shoot").on("shoot",()=>{
