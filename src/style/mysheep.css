@@ -38,6 +38,27 @@
     animation: my-expload 1s;
 }
 
+.life {
+    position: absolute;
+    left: 50%;
+    top: 74%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+}
+
+.heart {
+    color: red;
+    margin: 10px;
+    font-size: 30px;
+}
+
+@media all and (max-width: 340px) {
+    .heart {
+        margin: 4px;
+    }
+}
+
 .left-arrow {
     position: absolute;
     left: 0%;

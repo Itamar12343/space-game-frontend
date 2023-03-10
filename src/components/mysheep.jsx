@@ -1,7 +1,7 @@
 import store from "../redux/store";
 import {useDispatch} from "react-redux";
 import "../style/mysheep.css";
-import {ChevronLeft, ChevronRight, RocketTakeoffFill} from "react-bootstrap-icons";
+import {ChevronLeft, ChevronRight, HeartFill, RocketTakeoffFill} from "react-bootstrap-icons";
 import { useState } from "react";
 import { useRef } from "react";
 
@@ -14,6 +14,8 @@ const Mysheep = () => {
     const [shoot_wait, setShootWait] = useState(false);
     const [shoot_left, setShoot_left] = useState(50);
     const [isHit, setisHit] = useState(false);
+    const [life, setLife] = useState([1,2,3]);
+    let [lifeDelay, setLifeDelay] = useState(false);
 
 
     function move_left(){
@@ -51,7 +53,6 @@ const Mysheep = () => {
     }
 
     
-    
 
     const unsubscribe = store.subscribe(()=>{
         let gotRoomState = store.getState().AproveRoomReducer;
@@ -60,8 +61,15 @@ const Mysheep = () => {
         if(hit === true){
             //console.log("hit");
             setisHit(true);
+            if(lifeDelay === false){
+                setLifeDelay(true);
+                life.pop();
+                console.log(lifeDelay);
+            }
+            //setleft(newLife);
             setTimeout(() => {
                 setisHit(false);
+                setLifeDelay(false);
             }, 1000);
         }
 
@@ -129,6 +137,14 @@ const Mysheep = () => {
             {isHit && <div style={{left: left ? `${left}%` : "50%"}} className="my-expload"></div>}
             <ChevronLeft className="left-arrow" onClick={move_left}/>
             <ChevronRight className="right-arrow" onClick={move_right}/>
+            <div className="life" style={{left: left ? `${left}%` : "50%"}}>
+                {life.map(lifeNumber =>{
+                    console.log(lifeNumber);
+                    return(
+                        <HeartFill className="heart" key={crypto.randomUUID()}/>
+                    )
+                })}
+            </div>
         </div>
      );
 }
