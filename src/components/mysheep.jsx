@@ -70,7 +70,7 @@ const Mysheep = () => {
             setTimeout(() => {
                 setRoomState(true);
                 setPrevRoom(true);
-            }, 3000);
+            }, 4000);
         }
         if(gotRoomState === false && gotRoomState !== prevRoom){
             setRoomState(false);
