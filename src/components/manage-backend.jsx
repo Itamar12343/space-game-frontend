@@ -82,6 +82,10 @@ const ManageBackend = () => {
 
   socket.off("he got hit").on("he got hit",()=>{
     console.log("he got hit");
+    dispatch({type: "setHeGotHitTrue"});
+    setTimeout(() => {
+      dispatch({type: "setHeGotHitFalse"});
+    }, 200);
   });
 
   socket.off("shoot").on("shoot",()=>{

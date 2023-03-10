@@ -10,11 +10,20 @@ const Hissheep = () => {
     const [shoot_left, setSoot_left] = useState(null);
     const shootref = useRef(null);
     const [shoot_wait, setShoot_wait] = useState(false);
+    const [isHit, setisHit] = useState(false);
     const dispatch = useDispatch();
 
     const unsubscribe = store.subscribe(()=>{
         let gotPosition = store.getState().GotPositionReducer;
         let gotShoot = store.getState().GotShootReducer;
+        let heGotHit = store.getState().HeGotHitReducer;
+
+        if(heGotHit === true){
+            setisHit(true);
+            setTimeout(() => {
+                setisHit(false);
+            }, 1000);
+        }
 
         if(gotShoot === true){
             shootref.current.classList.add("his-shoot-animation");
@@ -45,6 +54,7 @@ const Hissheep = () => {
         <div>
             <RocketTakeoffFill style={{left: left ? `${left}%` : "50%"}} className="hissheep"/>
             <div ref={shootref} style={{left: shoot_left ? `${shoot_left}%` : "50%"}} className="his-shoot"></div>
+            {isHit && <div style={{left: left ? `${left}%` : "50%"}} className="his-expload"></div>}
         </div>
      );
 }

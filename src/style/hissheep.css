@@ -19,6 +19,19 @@
     opacity: 0;
 }
 
+.his-expload {
+    height: 300px;
+    width: 300px;
+    background-image: url("../imgs/exploade.png");
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: my-expload 1s;
+}
+
 .his-shoot-animation {
     opacity: 1;
     animation: his-shoot 0.5s;
