@@ -19,7 +19,7 @@ const Blocker = () => {
                     setTimeout(() => {
                         setCount(1);
                         setTimeout(() => {
-                            setCount("redy");
+                            setCount("ready");
                             setTimeout(() => {
                                 setCount("");
                                 setVisibility("visible");

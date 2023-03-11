@@ -11,6 +11,7 @@
     backdrop-filter: blur(8px);
     pointer-events: none;
     opacity: 70%;
+    pointer-events: none;
 }
 
 @keyframes color-change {

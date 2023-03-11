@@ -4,6 +4,7 @@ import "../style/mysheep.css";
 import {ChevronLeft, ChevronRight, HeartFill, RocketTakeoffFill} from "react-bootstrap-icons";
 import { useState } from "react";
 import { useRef } from "react";
+import { useEffect } from "react";
 
 const Mysheep = () => {
     const [left, setleft] = useState(50);
@@ -15,9 +16,22 @@ const Mysheep = () => {
     const [shoot_left, setShoot_left] = useState(50);
     const [isHit, setisHit] = useState(false);
     const [life, setLife] = useState([1,2,3]);
+    const [I_lost, setI_lost] = useState(false);
     let [lifeDelay, setLifeDelay] = useState(false);
 
 
+    useEffect(()=>{
+        if(I_lost === true){
+            setI_lost(false);
+            dispatch({type: "setILostTrue", text: "you lost"});
+            setTimeout(() => {
+                dispatch({type: "setILostTrue", text: "you lost"});
+                setTimeout(() => {
+                    dispatch({type: "setILostTrue", text: "you lost"});
+                }, 100);
+            }, 100);
+        }
+    },[I_lost]);
     function move_left(){
         if(left > 10){
             let leftPosition = left - 10;
@@ -64,7 +78,9 @@ const Mysheep = () => {
             if(lifeDelay === false){
                 setLifeDelay(true);
                 life.pop();
-                console.log(lifeDelay);
+                if(life[0] === undefined){
+                    setI_lost(true);
+                }
             }
             //setleft(newLife);
             setTimeout(() => {
@@ -139,7 +155,6 @@ const Mysheep = () => {
             <ChevronRight className="right-arrow" onClick={move_right}/>
             <div className="life" style={{left: left ? `${left}%` : "50%"}}>
                 {life.map(lifeNumber =>{
-                    console.log(lifeNumber);
                     return(
                         <HeartFill className="heart" key={crypto.randomUUID()}/>
                     )

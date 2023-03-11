@@ -1,11 +1,9 @@
-//import {useRef, useState} from "react"
 import store from "./redux/store";
 import { useState } from "react";
-import io from "socket.io-client";
 import Box from "./components/box";
 import Input from "./components/input";
 import Blocker from "./components/blocker";
-const socket = io.connect("http://localhost:3001");
+import GameOver from "./components/gameOver";
 
 function App() {
   const [room, setRoom] = useState(null);
@@ -13,15 +11,11 @@ function App() {
   store.subscribe(()=>{
     setRoom(store.getState());
   });
-  //socket.emit("stream", "helghuilo");
-
-  /*socket.on("stream", data=>{
-    console.log(data);
-  });*/
 
   return (
     <div className="App">
       <Blocker/>
+      <GameOver/>
       <Input/>
       <Box/>
     </div>
