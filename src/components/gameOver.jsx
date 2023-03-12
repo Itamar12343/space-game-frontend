@@ -13,6 +13,7 @@ const GameOver = () => {
         if(ILost !== false){
             setGameOver(true);
             setText(ILost);
+            
         }
     }); 
 

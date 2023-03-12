@@ -7,11 +7,9 @@
     width: 90vw;
     border-radius: 10px;
     background-color: rgb(0, 0, 0, 0.4);
-    z-index: 1;
+    z-index: 2;
     backdrop-filter: blur(8px);
-    pointer-events: none;
     opacity: 70%;
-    pointer-events: none;
 }
 
 @keyframes color-change {

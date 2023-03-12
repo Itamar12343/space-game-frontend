@@ -30,8 +30,11 @@ const ManageBackend = () => {
     let shootPosition = store.getState().ShootPositionReducer;
     let ILost = store.getState().ILostReducer;
 
-    if(ILost !== false){
-      socket.emit("I lost");
+    if(ILost !== false && ILost !== "you won"){
+      socket.emit("I lost",room);
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
     }
 
     if(shootPosition !== prevShootPosition){
@@ -87,6 +90,13 @@ const ManageBackend = () => {
     dispatch({type: "waitingRoom"});
   });
 
+  socket.off("you won").on("you won",()=>{
+    dispatch({type: "setILostTrue", text: "you won"});
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
+  });
+ 
   socket.off("he got hit").on("he got hit",()=>{
     dispatch({type: "setHeGotHitTrue"});
     setTimeout(() => {
