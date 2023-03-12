@@ -3,7 +3,8 @@ import {useDispatch} from "react-redux";
 import io from "socket.io-client";
 import { useState } from "react";
 import { useEffect } from "react";
-const socket = io.connect("https://space-game-backend.onrender.com/");
+//const socket = io.connect("https://space-game-backend.onrender.com/");
+const socket = io.connect("http://localhost:3001/");
 
 const ManageBackend = () => {
     const dispatch = useDispatch();
@@ -27,6 +28,11 @@ const ManageBackend = () => {
     let position = store.getState().PositionReducer;
     let shoot = store.getState().ShootReducer;
     let shootPosition = store.getState().ShootPositionReducer;
+    let ILost = store.getState().ILostReducer;
+
+    if(ILost !== false){
+      socket.emit("I lost");
+    }
 
     if(shootPosition !== prevShootPosition){
       setPrevShootPosition(shootPosition);
@@ -47,9 +53,10 @@ const ManageBackend = () => {
       socket.emit("shoot", room);
     }
 
-
     if(position !== 0){
-        socket.emit("space_sheep_position",{room, position});
+      //let new_position = position.position;
+      console.log(position);
+        socket.emit("space_sheep_position",{room, position});        
         //console.log("send position");
     }
 

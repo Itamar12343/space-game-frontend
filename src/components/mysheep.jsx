@@ -54,7 +54,7 @@ const Mysheep = () => {
         if(shoot_wait === false){
             setShoot_left(left);
             setShootWait(true);
-            dispatch({type: "setShootTrue"});
+            dispatch({type: "setShootTrue",text:"bg"});
             setTimeout(() => {
             dispatch({type: "setShootFalse"});
             }, 300);
