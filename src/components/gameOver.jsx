@@ -12,7 +12,7 @@ const GameOver = () => {
         unsubscribe();
         if(ILost !== false){
             setGameOver(true);
-            setText(ILost);
+            setText(ILost + "!");
             
         }
     }); 
