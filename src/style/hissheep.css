@@ -32,6 +32,21 @@
     animation: my-expload 1s;
 }
 
+.his-life {
+    position: absolute;
+    left: 50%;
+    top: 28%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+}
+
+.his-heart {
+    color: red;
+    margin: 10px;
+    font-size: 30px;
+}
+
 .his-shoot-animation {
     opacity: 1;
     animation: his-shoot 0.5s;

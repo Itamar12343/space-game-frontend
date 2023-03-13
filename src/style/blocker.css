@@ -33,7 +33,7 @@
 .block-text {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 44%;
     transform: translate(-50%, -50%);
     font-size: 60px;
     text-align: center;
@@ -42,7 +42,7 @@
 .block-count {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 44%;
     transform: translate(-50%, -50%);
     font-size: 60px;
     text-align: center;
