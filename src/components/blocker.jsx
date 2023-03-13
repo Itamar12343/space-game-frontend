@@ -41,7 +41,7 @@ const Blocker = () => {
     });
 
     return ( 
-        <motion.div initial={{opacity: 1}} animate={{opacity: visibility === "visible" ? 0 : 1}} className="block-box">
+        <motion.div initial={{opacity: 1, pointerEvents:"all"}} animate={{opacity: visibility === "visible" ? 0 : 1, pointerEvents: visibility === "visible" ? "none" : "all"}} className="block-box">
             <h1 className="block-text">{text}</h1>
             {count !== null && <h1 className="block-count">{count}</h1>}
         </motion.div>

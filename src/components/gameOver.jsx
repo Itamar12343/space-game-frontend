@@ -18,7 +18,7 @@ const GameOver = () => {
     }); 
 
     return ( 
-        <motion.div initial={{opacity: 0}} animate={{opacity: gameOver ? 1 : 0}} className="block-box">
+        <motion.div initial={{opacity: 0, pointerEvents: "none"}} animate={{opacity: gameOver ? 1 : 0, pointerEvents: gameOver ? "all" : "none"}} className="block-box">
             <h1 className="block-text">{text}</h1>
         </motion.div>
      );
